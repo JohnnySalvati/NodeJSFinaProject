@@ -1,0 +1,20 @@
+import jwt from 'jsonwebtoken';
+import 'dotenv/config';
+
+const secret_key = process.env.JWT_SECRET_KEY;
+
+export const authentication = (req, res, next) => {
+
+    const authHeader = req.headers['authorization'];
+    if (!authHeader) 
+        return res.sendStatus(401); //No autorizado
+
+    const token = req.headers['authorization'].split(" ")[1];
+    if (!token)
+        return res.sendStatus(401); //No autorizado
+
+    jwt.verify(token, secret_key, (err) => {
+        if (err) return res.sendStatus(403); //Token invalido
+        next();
+    });
+}
