@@ -9,5 +9,5 @@ https://github.com/JohnnySalvati/NodeJSFinalProject.git
 
 # Postman - Rutas
 La descripcion de las rutas se encuentra documentada en el siguiente link de Postman:
-https://www.postman.com/aerospace-administrator-13558417/proyecto-final-node-js/overview
+https://www.postman.com/aerospace-administrator-13558417/proyecto-final-node-js/documentation/i186riu/authentication
 

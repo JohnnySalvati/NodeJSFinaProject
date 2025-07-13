@@ -6,6 +6,7 @@ import userRoutes from './src/routes/user.routes.js';
 import productRoutes from './src/routes/product.routes.js';
 import authRoutes from './src/routes/authentication.routes.js'
 import { authentication } from './src/middlewares/authentication.js';
+import { showReadme } from './src/controllers/readme.controller.js'
 
 
 const app = express();
@@ -21,9 +22,8 @@ app.use(cors())
 app.use
 
 //routes
-app.get("/", (req, res) => {
-  res.json({ title: "Home Page" });
-});
+app.get("/", showReadme);
+
 app.use('/api/users', authentication, userRoutes);
 app.use('/api/products',authentication, productRoutes);
 app.use('/auth/login', authRoutes);
@@ -32,6 +32,8 @@ app.use((req, res, next) => {
     res.status(404).json({ error: 'Ruta no encontrada' });
 });
 
+
+// listen
 app.listen(app.get("PORT"), () => {
     console.log(`Server running on port http://localhost:${app.get("PORT")}`);
     
