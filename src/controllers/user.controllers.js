@@ -17,7 +17,7 @@ const getByName = async (req, res) => {
         const name = req.params.name;
         const user = await userServices.getByName(name);
         if (!user)
-            return res.status(200).json({message: 'Usuario no encontrado'});
+            return res.status(404).json({message: 'Usuario no encontrado'});
         res.status(200).json({message: 'Usuario encontrado', payload: user});
     } catch (error) {
         res.status(500).json({message: 'Error interno del servidor', error: error.message})
